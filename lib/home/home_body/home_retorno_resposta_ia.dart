@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:teste_ia/home/home_controller/home_notifier.dart';
 
-class BoldTextParser extends StatelessWidget {
-  final String text;
+// Formata o modelo de apresentação de texto da IA, colocando * para ser negrito.
+class RetornoRespostaIA extends StatefulWidget {
+  final HomeNotifier homeNotifier;
 
-  const BoldTextParser({
+  const RetornoRespostaIA({
     super.key,
-    required this.text,
+    required this.homeNotifier,
   });
 
   @override
+  State<RetornoRespostaIA> createState() => _RetornoRespostaIAState();
+}
+
+class _RetornoRespostaIAState extends State<RetornoRespostaIA> {
+  late String text;
+
+  @override
   Widget build(BuildContext context) {
+    text = widget.homeNotifier.respostaIA;
     return Text.rich(
       style: const TextStyle(
         fontSize: 16,
