@@ -21,9 +21,7 @@ class _RetornoRespostaIAState extends State<RetornoRespostaIA> {
   Widget build(BuildContext context) {
     text = widget.homeNotifier.respostaIA;
     return Text.rich(
-      style: const TextStyle(
-        fontSize: 16,
-      ),
+      style: const TextStyle(fontSize: 16),
       parseBoldText(text),
     );
   }

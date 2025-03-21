@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teste_ia/home/home_body/home_app_bar.dart';
 import 'package:teste_ia/home/home_controller/home_notifier.dart';
 import 'package:teste_ia/home/home_body/home_input_prompt.dart';
 import 'package:teste_ia/home/home_body/home_retorno_resposta_ia.dart';
@@ -16,13 +17,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 84, 15, 202),
-        title: const Text(
-          'Testando Ia',
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
+      appBar: HomeAppBar(homeNotifier: homeNotifier),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
