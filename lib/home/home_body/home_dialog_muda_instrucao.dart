@@ -41,7 +41,7 @@ class HomeDialogMudaInstrucao extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  iaSource.mudarInstrucao(textController.text);
+                  iaSource.mudarPersonalidade(textController.text);
                   Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(

@@ -17,7 +17,7 @@ class IASource {
     return response.text!;
   }
 
-  void mudarInstrucao(String novaInstrucao) {
-    iaInfo.instrucao = novaInstrucao;
+  void mudarPersonalidade(String novaInstrucao) {
+    iaInfo.instrucaoAdicional = novaInstrucao;
   }
 }

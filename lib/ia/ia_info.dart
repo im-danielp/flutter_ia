@@ -1,6 +1,7 @@
 import 'package:google_generative_ai/google_generative_ai.dart';
 
 class IAInfo {
+  // ------------------------- Singleton -------------------------
   static final IAInfo _instance = IAInfo._internal();
 
   IAInfo._internal();
@@ -9,10 +10,17 @@ class IAInfo {
     return _instance;
   }
 
-  String instrucao =
-      'Use uma linguagem mais descolada e maneira, use gírias de skatista paulista pixador. Se aproprie de gírias do hiphop. Quando for montar o texto e quiser deixa-lo em negrito, envolva o texto desejado com o caractere *. Quando quiser colocar tópicos não numerados, coloque o caractere - antes do texto. Não use o caracter * para definir um novo tópico, você pode usar o caractere •';
+  // ------------------------- Atributos -------------------------
+  // Instrução base da IA, que vai ser padrão independente da instrução passada pelo usuário.
+  String instrucaoBase =
+      'Quando for montar o texto e quiser deixa-lo em negrito, envolva o texto desejado com o caractere *. Quando quiser colocar tópicos não numerados, coloque o caractere - antes do texto. Não use o caracter * para definir um novo tópico, você pode usar o caractere •';
 
-  String getInstrucao() => instrucao;
+  // Instrução que pode se informada pelo usuário.
+  String instrucaoAdicional = '';
+
+  // ------------------------- Métodos -------------------------
+  // Coleta o comportamento da IA.
+  String getsystemInstruction() => '$instrucaoBase . $instrucaoAdicional';
 
   // Coleta a key da API
   String getApiKey() => "AIzaSyAisHWHwli8_rHfkaOlQD1vYafsROksXx0";
@@ -20,7 +28,7 @@ class IAInfo {
   // Coleta o modelo da IA.
   GenerativeModel getModel() {
     final String apiKey = getApiKey();
-    final String instrucao = getInstrucao();
+    final String systemInstruction = getsystemInstruction();
 
     final model = GenerativeModel(
       model: 'gemini-2.0-flash',
@@ -32,10 +40,7 @@ class IAInfo {
         maxOutputTokens: 8192,
         responseMimeType: 'text/plain',
       ),
-      systemInstruction: Content.system(
-        instrucao,
-        // 'Use uma linguagem mais técnica e compreensiva. Você está sendo usado para auxiliar perguntas de eletricistas e faz parte da empresa Dolp Engenharia. Você pode ajudar os usuários e sugerir medidas de segurança para evitar danos. Quando for montar o texto e quiser deixa-lo em negrito, envolva o texto desejado com o caractere *. Quando quiser colocar tópicos não numerados, coloque o caractere - antes do texto. Não use o caracter * para definir um novo tópico, você pode usar o caractere •',
-      ),
+      systemInstruction: Content.system(systemInstruction),
     );
 
     return model;
