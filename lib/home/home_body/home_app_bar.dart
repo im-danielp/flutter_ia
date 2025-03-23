@@ -26,12 +26,13 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         IconButton(
           // Limpa a resposta da IA.
-          onPressed: () => homeNotifier.armazenaResposta(''),
+          onPressed: () async => homeNotifier.armazenaResposta(''),
           icon: const Icon(
             Icons.refresh_outlined,
             color: Colors.white,
           ),
         ),
+        // Adicionar instrução.
         IconButton(
           onPressed: () {
             showDialog(

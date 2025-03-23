@@ -22,6 +22,7 @@ class _InputPromptState extends State<InputPrompt> {
 
   // Envia o prompt para a IA e armazena a resposta no ChangeNotifier.
   void enviaPrompt(String promp) async {
+    setState(() => digitando = false);
     textController.clear();
     focusNode.unfocus();
     final respostaIA = await iaSource.interagir(promp);

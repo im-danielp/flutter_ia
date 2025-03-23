@@ -20,9 +20,34 @@ class _RetornoRespostaIAState extends State<RetornoRespostaIA> {
   @override
   Widget build(BuildContext context) {
     text = widget.homeNotifier.respostaIA;
-    return Text.rich(
-      style: const TextStyle(fontSize: 16),
-      parseBoldText(text),
+    return Column(
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 10,
+          children: [
+            Visibility(
+              visible: text.isNotEmpty,
+              child: const CircleAvatar(
+                maxRadius: 16,
+                backgroundColor: Colors.amber,
+                child: Icon(
+                  Icons.pest_control_rodent,
+                  size: 20,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            Expanded(
+              child: Text.rich(
+                style: const TextStyle(fontSize: 16),
+                parseBoldText(text),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 35),
+      ],
     );
   }
 

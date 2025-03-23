@@ -19,17 +19,17 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: HomeAppBar(homeNotifier: homeNotifier),
       body: SingleChildScrollView(
+        reverse: true,
         padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            InputPrompt(homeNotifier: homeNotifier),
-            const SizedBox(height: 20),
-            ListenableBuilder(
-              listenable: homeNotifier,
-              builder: (context, child) => RetornoRespostaIA(homeNotifier: homeNotifier),
-            ),
-          ],
+        child: ListenableBuilder(
+          listenable: homeNotifier,
+          builder: (context, child) => RetornoRespostaIA(homeNotifier: homeNotifier),
         ),
+      ),
+      bottomSheet: Container(
+        padding: const EdgeInsets.fromLTRB(16, 5, 16, 16),
+        color: Colors.white,
+        child: InputPrompt(homeNotifier: homeNotifier),
       ),
     );
   }
