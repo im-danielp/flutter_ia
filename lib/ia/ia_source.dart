@@ -3,7 +3,7 @@ import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:teste_ia/ia/ia_info.dart';
 
-// Funções relacionadas a IA./
+// Funções relacionadas a IA.
 class IASource {
   final iaInfo = IAInfo();
 
